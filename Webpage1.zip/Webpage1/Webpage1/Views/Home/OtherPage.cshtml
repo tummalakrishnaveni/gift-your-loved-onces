@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Other Page";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Page</title>
+
+</head>
+<body>
+    <header>
+        <center>
+            <nav>
+                <i class="fa fa-shopping-cart" style="font-size: 40px;"></i>
+                <!-- Heading button that redirects to the same page (OtherPage) -->
+                <a href="@Url.Action("OtherPage", "Home")"><button><h1>Gift your loved Ones</h1></button></a>
+            </nav>
+        </center>
+    </header>
+
+    <div>
+       
+        <!-- New button that redirects to the Index page -->
+        <a href="@Url.Action("Index", "Home")"><button>Gift</button></a>
+        <p></p>
+        <a href="@Url.Action("Index", "Home")"><button>Bonquet</button></a>
+        <p></p>
+        <a href="@Url.Action("Index", "Home")"><button>Chocolates</button></a>
+        <p></p>
+        <a href="@Url.Action("Index", "Home")"><button>Hampers</button></a>
+
+    </div>
+</body>
+</html>

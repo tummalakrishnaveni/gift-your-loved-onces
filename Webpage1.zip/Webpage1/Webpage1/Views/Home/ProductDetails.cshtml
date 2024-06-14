@@ -1,0 +1,90 @@
+﻿@model Webpage1.Models.Product
+
+@{
+    ViewBag.Title = "Product Details";
+    Layout = null; // Disable the default layout
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            background-image: url('@Url.Content("~/Content/Images/background.jpg")');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        .product-details {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+            .product-details img {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+                border-radius: 8px;
+            }
+
+            .product-details h2 {
+                margin-top: 0;
+            }
+
+            .product-details p {
+                margin: 10px 0;
+            }
+
+        .gift-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center>
+            <nav>
+                <i class="fa fa-shopping-cart" style="font-size: 40px;"></i>
+                <a href="@Url.Action("OtherPage", "Home")"><button><h1>Gift your loved Ones</h1></button></a>
+            </nav>
+        </center>
+    </header>
+
+    <div class="product-details">
+        <img src="@Model.ImageUrl" alt="@Model.Name">
+        <h2>@Model.Name</h2>
+        <p>M.R.P @Model.Price/-</p>
+        
+        <!-- Gift button -->
+        @using (Html.BeginForm("GiftProduct", "Home", FormMethod.Post))
+        {
+            @Html.Hidden("productId", Model.Id)
+            <button type="submit" class="gift-button">Add to Cart</button>
+        }
+    </div>
+</body>
+</html>

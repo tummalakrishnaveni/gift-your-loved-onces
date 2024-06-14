@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Gift Confirmation";
+    Layout = null; // Disable the default layout
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        .message-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+            .message-box h2 {
+                margin-top: 0;
+            }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h2>Gift Added Successfully!</h2>
+        <!-- Add additional content or styling as needed -->
+    </div>
+</body>
+</html>

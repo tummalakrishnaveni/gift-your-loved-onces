@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Webpage1.Models.Product>
+
+@{
+    Layout = null; // Disable the default layout
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifts</title>
+    <link rel="stylesheet" href="~/Content/GIFT.CSS">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .card-image {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            background: white;
+            border-radius: 8px;
+        }
+        .card-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card-image h4 {
+            margin: 10px 0;
+        }
+        .card-image p {
+            margin: 5px 0;
+        }
+        .gift-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center>
+            <nav>
+                <i class="fa fa-shopping-cart" style="font-size: 40px;"></i>
+                <a href="@Url.Action("OtherPage", "Home")"><button><h1>Gift your loved Ones</h1></button></a>
+            </nav>
+        </center>
+    </header>
+
+    <div class="grid">
+        @foreach (var product in Model)
+        {
+            <div class="card-image">
+                <a href="@Url.Action("ProductDetails", "Home", new { id = product.Id })">
+                    <img src="@product.ImageUrl" alt="@product.Name">
+                </a>
+                <h4>@product.Name</h4>
+                <p>M.R.P @product.Price/-</p>
+                @using (Html.BeginForm("GiftProduct", "Home", FormMethod.Post))
+                {
+                    @Html.Hidden("productId", product.Id)
+                   
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>
